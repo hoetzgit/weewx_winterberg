@@ -1,0 +1,68 @@
+#errorCatcher Echo
+#encoding UTF-8
+#set global $page = "energy"
+
+    #include "header.html.tmpl"
+
+    <div class="site-inner">
+        <main class="content">	
+            <article class="weewx graphs" itemscope itemtype="https://schema.org/CreativeWork">
+
+                <script type="text/javascript">
+                    var graph = getURLvar("graph");
+                    if ( graph === undefined ) {
+                        // If no URL VAR, default to the graph group defined in Extras
+                        graph = "eday";
+                    }
+                    var thisPageGraphs = graphgroups_raw[graph];
+                    
+                    pages.push("energy");  // wird benoetigt, damit die korrekte json-Datei gefunden wird !
+                    
+                    jQuery(document).ready(function() {
+                            // Loop through the graph group for this page and add the graph divs to the page
+                            try {
+                                thisPageGraphs.forEach( graphID => {
+                                    jQuery(".graph-outer").append('<div class="col-sm-12"><div id="' + graphID + '" style="width:100%;height:100%;margin-top:20px;"></div></div>');
+                                });
+                                
+                                // Set page title
+                                jQuery(".graphpage-title").html(graphgroups_titles[graph]);
+                                
+                                // Set page content
+                                jQuery(".graphpage-content").html(graphpage_content[graph]);
+                                
+                                // Render the charts
+                                showChart(graph);
+                                setInterval(showChart,30000,graph);
+                            } catch(err) {
+                                console.log("ERROR: Cannot add graphs from [" + graph + "] graph group: " + err.message);
+                            }
+                    });
+                </script>
+                
+                #include "page-header.inc"
+
+                <!-- Begin row -->
+                <div class="row">
+                    <div class="col-sm-12 wx-buttons">
+                        <a href="./?graph=eday"><button type="button" class="btn btn-primary">Tag</button></a> <a href="./?graph=eweek"><button type="button" class="btn btn-primary">Woche</button></a> <a href="./?graph=emonth"><button type="button" class="btn btn-primary">Monat</button></a> <a href="./?graph=eyear"><button type="button" class="btn btn-primary">Jahr</button></a> <a href="./?graph=etotal"><button type="button" class="btn btn-primary">Gesamt</button></a> 
+                    </div>
+                    <div class="col-sm-12 wx-buttons-description">
+                        <span class='graphpage-title'></span>
+                    </div>
+                </div>
+                <!-- End row -->
+                
+                <div class="graphpage-content col-sm-12"></div><!-- JS populated -->
+                
+                <div class="graph-outer"></div><!-- JS populated -->
+                
+                <div class="clear"></div>
+                
+            </article>
+        </main>
+    </div>
+
+
+    #include "footer.html.tmpl"
+
