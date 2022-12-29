@@ -24,6 +24,7 @@
 		#else if $page == "house"
                 <h1>$obs.label.house_page_header</h1>
 		#end if
+              <p style="font-size:12px !important;">$current.dateTime.format("%d.%m.%Y %H:%M")</p>
             </div>
         </div>
         <div class="col-sm-5" style="float:right;">

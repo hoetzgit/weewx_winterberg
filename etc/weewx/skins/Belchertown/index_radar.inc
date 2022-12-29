@@ -56,8 +56,4 @@ jQuery('.tabs-menu a').click(function(event) {
 #radar {
     display:block;
 }
-
-.toprow-height {
-    min-height: 402px !important;
-}
 </style>

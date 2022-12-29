@@ -78,6 +78,7 @@ a:active {
 .site-footer {
 	background-color: #070f45;
 	/* text-align: center; */
+  font-size:12px !important;
 }
 
 .site-footer a:hover {
@@ -177,14 +178,82 @@ a:active {
 
 .snapshot-records-today-header {
   font-size:14px !important;
+  font-weight: bold !important;
 }
 
 .snapshot-records-month-header {
   font-size:14px !important;
+  font-weight: bold !important;
+}
+
+.snapshot-records-year-header {
+  font-size:14px !important;
+  font-weight: bold !important;
 }
 
 .graphpage-title {
   font-size:16px !important;
+}
+
+.feelslike {
+  font-size:15px !important;
+}
+
+.current-obs-text {
+  font-size:15px !important;
+}
+
+.weather-obs-top {
+  font-size:15px !important;
+}
+
+.weather-obs-bottom {
+  font-size:15px !important;
+}
+
+.windtext {
+  font-size:15px !important;
+}
+
+.mph {
+  font-size:15px !important;
+}
+
+.sun-moon-title {
+  font-size:15px !important;
+  font-weight: bold !important;
+}
+
+.stn-quick-stats {
+  font-size:15px !important;
+}
+
+.moon-visible {
+  font-size:15px !important;
+}
+
+.sunrise-value {
+  font-size:15px !important;
+}
+
+.sunset-value {
+  font-size:15px !important;
+}
+
+.modal-title {
+  font-size:16px !important;
+}
+
+.celestial_body {
+  font-size:15px !important;
+}
+
+.almanac_last_updated {
+  font-size:12px !important;
+}
+
+.modal-content {
+    background-color: #19236b !important;
 }
 
 /* about page */
@@ -421,7 +490,7 @@ a:active {
 }
 
 .toprow-height {
-    min-height: 428px !important;
+    min-height: 380px !important;
 }
 
 /* Border between rain/rainrate and humidity rel/abs */

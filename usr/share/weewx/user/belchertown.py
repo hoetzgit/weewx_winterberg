@@ -92,6 +92,86 @@ else:
     def logerr(msg):
         log.error(msg)
 
+# [!!!!] Neue Funktion fuer das Mapping von eigenen Farbnamen in der Datei 'graphs.conf'
+
+def color_mapping(color):
+    if color == 'mm_outTemp':
+        return '#ff0000'           # starkes Rot
+    elif color == 'mm_dewpoint':
+        return '#ff9500'           # Orange
+    elif color == 'mm_soilTemp2':
+        return '#00ffff'           # Hellblau (Cyan)
+    elif color == 'mm_barometer':
+        return '#ff00ff'           # Magenta
+    elif color == 'mm_outHumidity':
+        return '#00ffff'           # Hellblau (Cyan)
+    elif color == 'mm_rain':
+        return '#0048ff'           # Blau
+    elif color == 'mm_leafWet1':
+        return '#00a806'           # dunkleres Grün
+    elif color == 'mm_windGust':
+        return '#ff0000'           # starkes Rot
+    elif color == 'mm_windSpeed':
+        return '#ff9500'           # Orange
+    elif color == 'mm_windDir':
+        return '#0048ff'           # Blau
+    elif color == 'mm_radiation':
+        return '#ff9500'           # Orange
+    elif color == 'mm_maxSolarRad':
+        return '#ffc83f'           # helleres Orange
+    elif color == 'mm_UV':
+        return '#ff0000'           # starkes Rot
+    elif color == 'mm_sunshineDur':
+        return '#ffc83f'           # helleres Orange
+    elif color == 'mm_wasser_schacht_pegel':
+        return '#ff00ff'           # Magenta
+    elif color == 'mm_pv':
+        return '#ffc83f'           # helleres Orange
+    elif color == 'mm_pv_ost':
+        return '#ff0000'           # starkes Rot
+    elif color == 'mm_pv_sued':
+        return '#05ff05'           # helleres Grün
+    elif color == 'mm_pv_west':
+        return '#0048ff'           # Blau
+    elif color == 'mm_soilMoist2':
+        return '#ff9500'           # Orange
+    elif color == 'mm_netzbezug':
+        return '#ff0000'           # starkes Rot
+    elif color == 'mm_netzlieferung':
+        return '#05ff05'           # helleres Grün
+    elif color == 'mm_eigenverbrauch':
+        return '#0048ff'           # Blau
+    elif color == 'mm_temp_boiler':
+        return '#ff00ff'           # Magenta
+    elif color == 'mm_temp_heizung_vorlauf':
+        return '#ff0000'           # starkes Rot
+    elif color == 'mm_temp_heizung_ruecklauf':
+        return '#05ff05'           # helleres Grün
+    elif color == 'mm_temp_sole_links':
+        return '#ff9500'           # Orange
+    elif color == 'mm_temp_sole_rechts':
+        return '#e0fc05'           # Gelb
+    elif color == 'mm_ec_sueden':
+        return '#0048ff'           # Blau
+    elif color == 'mm_ec_westen':
+        return '#00ffff'           # Hellblau (Cyan)
+    elif color == 'mm_ec_sueden_t':
+        return '#ff0000'           # starkes Rot
+    elif color == 'mm_ec_westen_t':
+        return '#ff9500'           # Orange
+    elif color == 'mm_cpu_temp':
+        return '#ff00ff'           # Magenta
+    elif color == 'mm_temp_wohnen':
+        return '#ff00ff'           # Magenta
+    elif color == 'mm_temp_garage':
+        return '#05ff05'           # helleres Grün
+    elif color == 'mm_temp_dach':
+        return '#ff9500'           # Orange
+    else:
+#        logdbg("color_mapping => " + color)
+        return color
+
+# [!!!!] (color_mapping)
 
 # Print version in syslog for easier troubleshooting
 VERSION = "1.3b2"
@@ -2734,6 +2814,10 @@ class HighchartsJsonGenerator(weewx.reportengine.ReportGenerator):
                     for highcharts_config, highcharts_value in self.chart_dict[
                         chart_group
                     ][plotname][line_name].items():
+                        if highcharts_config == 'color':
+                          new_color = color_mapping(highcharts_value)                                                                                     # [!!!!]
+#                          logdbg("highchart option config=" + str(highcharts_config) + " value=" + str(highcharts_value) + " => new=" + str(new_color))  # [!!!!]
+                          highcharts_value = new_color                                                                                                    # [!!!!]
                         output[chart_group][plotname]["series"][line_name][
                             highcharts_config
                         ] = highcharts_value
@@ -2741,6 +2825,7 @@ class HighchartsJsonGenerator(weewx.reportengine.ReportGenerator):
                     # Override any highcharts series configs with standardized
                     # data, then generate the data output
                     output[chart_group][plotname]["series"][line_name]["name"] = name
+#                    logdbg("name=" + str(name))                                             # [!!!!]
 
                     # Set the yAxis min and max if present. Useful for the
                     # rxCheckPercent plots

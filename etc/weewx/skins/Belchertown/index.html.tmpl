@@ -373,6 +373,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="clear"></div>
+                                                
+                                                #include "celestialmm.inc"
+
                                                 #if $Extras.has_key("almanac_extras") and $Extras.almanac_extras == '1' and $almanac.hasExtras
                                                 <!-- Almanac Modal -->
                                                 <div class="sun-moon-modal"><a href="#almanac" data-toggle="modal" data-target="#almanac">$obs.label.almanac_more_details</a></div>
@@ -497,37 +500,45 @@
                                 </div>
                                 <table>
                                     <tr>
-                                        <td><b>$obs.label.snapshot_high:</b></td>    <td><span class="dailystatshigh">$day.outTemp.max</span></td><!-- AJAX -->
-                                        <td><b>$obs.label.snapshot_low:</b></td>    <td><span class="dailystatslow">$day.outTemp.min</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_low:</td>    <td><span class="dailystatslow">$day.outTemp.min</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_high:</td>    <td><span class="dailystatshigh">$day.outTemp.max</span></td><!-- AJAX -->
                                     </tr>
                                     <tr>
-                                        <td><b>$obs.label.snapshot_today_avg_wind:</b></td>    <td><span class="dailystatswindavg">$day.wind.avg</span></td><!-- AJAX -->
-                                        <td><b>$obs.label.snapshot_today_high_wind:</b></td>        <td><span class="dailystatswindmax">$day.wind.max</span></td><!-- AJAX -->                    
+                                        <td>$obs.label.snapshot_today_avg_wind:</td>    <td><span class="dailystatswindavg">$day.wind.avg</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_today_high_wind:</td>        <td><span class="dailystatswindmax">$day.wind.max</span></td><!-- AJAX -->                    
                                     </tr>
                                     <tr>
-                                        <td><b>$obs.label.snapshot_today_rain:</b></td>    <td><span class="dailystatsrain">$day.rain.sum</span></td><!-- AJAX -->
-                                        <td><b>$obs.label.snapshot_today_rainrate:</b></td>    <td><span class="dailystatsrainrate">$day.rainRate.max</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_today_rain:</td>    <td><span class="dailystatsrain">$day.rain.sum</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_today_rainrate:</td>    <td><span class="dailystatsrainrate">$day.rainRate.max</span></td><!-- AJAX -->
+                                    </tr>
+                                    <tr>
+                                        <td>$obs.label.snapshot_baro_low:</td>    <td><span class="dailystatsblow">$day.barometer.min</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_baro_high:</td>    <td><span class="dailystatsbhigh">$day.barometer.max</span></td><!-- AJAX -->
                                     </tr>
                                 </table>
                             </div>
 
-                            <!-- This Month Snapshot Stats -->
+                            <!-- This Year Snapshot Stats -->
                             <div class="col-sm-6 stn-quick-stats border-left">
                                 <div class="stats-title">
-                                    <span class="snapshot-records-month-header"></span><!-- JS and AJAX -->
+                                    <span class="snapshot-records-year-header"></span><!-- JS and AJAX -->
                                 </div>
                                 <table>
                                     <tr>
-                                        <td><b>$obs.label.snapshot_high:</b></td>    <td><span class="monthstatshigh">$month.outTemp.max</span></td><!-- AJAX -->
-                                        <td><b>$obs.label.snapshot_low:</b></td>    <td><span class="monthstatslow">$month.outTemp.min</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_low:</td>    <td><span class="yearstatslow">$year.outTemp.min</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_high:</td>    <td><span class="yearstatshigh">$year.outTemp.max</span></td><!-- AJAX -->
                                     </tr>
                                     <tr>
-                                        <td><b>$obs.label.snapshot_month_avg_wind:</b></td>    <td><span class="monthstatswindavg">$month.wind.avg</span></td><!-- AJAX -->
-                                        <td><b>$obs.label.snapshot_month_high_wind:</b></td>        <td><span class="monthstatswindmax">$month.wind.max</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_month_avg_wind:</td>    <td><span class="yearstatswindavg">$year.wind.avg</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_month_high_wind:</td>        <td><span class="yearstatswindmax">$year.wind.max</span></td><!-- AJAX -->
                                     </tr>
                                     <tr>
-                                        <td><b>$obs.label.snapshot_month_rain:</b></td>        <td><span class="monthstatsrain">$month.rain.sum</span></td><!-- AJAX -->
-                                        <td><b>$obs.label.snapshot_month_rainrate:</b></td>    <td><span class="monthstatsrainrate">$month.rainRate.max</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_month_rain:</td>        <td><span class="yearstatsrain">$year.rain.sum</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_month_rainrate:</td>    <td><span class="yearstatsrainrate">$year.rainRate.max</span></td><!-- AJAX -->
+                                    </tr>
+                                    <tr>
+                                        <td>$obs.label.snapshot_baro_low:</td>    <td><span class="yearstatsblow">$year.barometer.min</span></td><!-- AJAX -->
+                                        <td>$obs.label.snapshot_baro_high:</td>    <td><span class="yearstatsbhigh">$year.barometer.max</span></td><!-- AJAX -->
                                     </tr>
                                 </table>
                             </div>

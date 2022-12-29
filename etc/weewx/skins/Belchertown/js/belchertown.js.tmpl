@@ -642,6 +642,7 @@ function update_weewx_data(data) {
     try {
         jQuery(".snapshot-records-today-header").html(tzAdjustedMoment(data["current"]["epoch"]).format('$obs.label.time_snapshot_records_today_header'));
         jQuery(".snapshot-records-month-header").html(tzAdjustedMoment(data["current"]["epoch"]).format('$obs.label.time_snapshot_records_month_header'));
+        jQuery(".snapshot-records-year-header").html(tzAdjustedMoment(data["current"]["epoch"]).format('$obs.label.time_snapshot_records_year_header'));
     } catch (err) {
         // Returned "current" data does not have this value
     }
@@ -654,6 +655,8 @@ function update_weewx_data(data) {
     jQuery(".dailystatsrain").html(data["day"]["rain"]["sum"]);
     jQuery(".dailystatsrainrate").html(data["day"]["rain"]["max"]);
     jQuery(".dailywindrun").html(data["day"]["wind"]["windrun"]);
+    jQuery(".dailystatsbhigh").html(data["day"]["barometer"]["max"]);    // added by This Manhart
+    jQuery(".dailystatsblow").html(data["day"]["barometer"]["min"]);     // added by This Manhart
 
     // Month Snapshot Stats Section
     jQuery(".monthstatshigh").html(data["month"]["outTemp"]["max"]);
@@ -662,6 +665,18 @@ function update_weewx_data(data) {
     jQuery(".monthstatswindmax").html(data["month"]["wind"]["max"]);
     jQuery(".monthstatsrain").html(data["month"]["rain"]["sum"]);
     jQuery(".monthstatsrainrate").html(data["month"]["rain"]["max"]);
+    jQuery(".monthstatsbhigh").html(data["month"]["barometer"]["max"]);  // added by This Manhart
+    jQuery(".monthstatsblow").html(data["month"]["barometer"]["min"]);   // added by This Manhart
+
+    // Year Snapshot Stats Section
+    jQuery(".yearstatshigh").html(data["year"]["outTemp"]["max"]);       // added by This Manhart
+    jQuery(".yearstatslow").html(data["year"]["outTemp"]["min"]);        // added by This Manhart
+    jQuery(".yearstatswindavg").html(data["year"]["wind"]["average"]);   // added by This Manhart
+    jQuery(".yearstatswindmax").html(data["year"]["wind"]["max"]);       // added by This Manhart
+    jQuery(".yearstatsrain").html(data["year"]["rain"]["sum"]);          // added by This Manhart
+    jQuery(".yearstatsrainrate").html(data["year"]["rain"]["max"]);      // added by This Manhart
+    jQuery(".yearstatsbhigh").html(data["year"]["barometer"]["max"]);    // added by This Manhart
+    jQuery(".yearstatsblow").html(data["year"]["barometer"]["min"]);     // added by This Manhart
 
     // Sunrise and Sunset            
     jQuery(".sunrise-value").html(tzAdjustedMoment(parseFloat(data["almanac"]["sunrise_epoch"]).toFixed(0)).format("$obs.label.time_sunrise"));

@@ -251,6 +251,7 @@ class Meteohub(weewx.drivers.AbstractDevice):
           self.port.close()
           self.socket.close()
           
-          time.sleep(30)
+#          time.sleep(30)
+          time.sleep(10)
                         
 # --------------------------------------------------------------------------------------------------------
